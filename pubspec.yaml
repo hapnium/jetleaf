@@ -1,0 +1,45 @@
+name: jetleaf
+description: A modern, high-performance framework for building scalable backend applications in Dart
+version: 1.0.0
+
+publish_to: none
+
+homepage: https://jetleaf.dev
+repository: https://github.com/hapnium/jetleaf
+
+topics:
+- Asset Bundler
+- Resource Loader
+- Template Engine
+- HTML
+- Dart
+- Backend
+- IO
+- Collections
+- Primitives
+- Optional Types
+- Math
+- Date/Time
+- Regex
+
+keywords:
+- Asset Bundler
+- Resource Loader
+- Template Engine
+- HTML
+- Dart
+- Backend
+- IO
+- Collections
+- Primitives
+- Optional Types
+- Math
+- Date/Time
+- Regex
+
+environment:
+  sdk: 3.8.1
+
+dev_dependencies:
+  test: ^1.21.0
+  lints: ^3.0.0
