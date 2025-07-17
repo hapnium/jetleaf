@@ -177,3 +177,46 @@ class EndOfStreamException extends IOException {
   /// ```
   const EndOfStreamException([String? message]) : super(message ?? 'End of stream reached');
 }
+
+/// {@template no_such_element_exception}
+/// Thrown when an operation attempts to access an element that does not exist.
+///
+/// This is commonly used in iteration or stream operations, similar to Java's
+/// `NoSuchElementException`.
+///
+/// ---
+///
+/// ### ❗ Example:
+/// ```dart
+/// final list = <int>[];
+/// if (list.isEmpty) {
+///   throw NoSuchElementException('List is empty');
+/// }
+/// ```
+/// {@endtemplate}
+class NoSuchElementException extends IOException {
+  /// {@macro no_such_element_exception}
+  const NoSuchElementException([String? message]) : super(message ?? 'No element found');
+}
+
+/// {@template comparator_exception}
+/// Exception thrown when a comparator is used with a type that is not comparable.
+/// 
+/// Example usage:
+/// ```dart
+/// try {
+///   final list = [1, 'a', 2];
+///   list.sort(Comparator.naturalOrder());
+/// } catch (e) {
+///   if (e is ComparatorException) {
+///     print(e.message); // "Cannot compare 1 and a. a is not comparable."
+///   }
+/// }
+/// ```
+/// 
+/// ---
+/// {@endtemplate}
+class ComparatorException extends LangException {
+  /// {@macro comparator_exception}
+  ComparatorException(String message) : super(message);
+}

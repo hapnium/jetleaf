@@ -20,6 +20,10 @@
 /// @organization Hapnium
 library;
 
+export 'src/lang/byte/byte_array.dart';
+export 'src/lang/byte/byte_stream.dart';
+export 'src/lang/byte/byte.dart';
+
 export 'src/lang/collections/array_list.dart';
 export 'src/lang/collections/linked_list.dart';
 export 'src/lang/collections/stack.dart';
@@ -31,6 +35,8 @@ export 'src/lang/collections/hash_set.dart';
 
 export 'src/lang/collectors/collectors.dart';
 export 'src/lang/collectors/collector.dart';
+
+export 'src/lang/comparator/comparator.dart';
 
 export 'src/lang/extensions/others/date_time.dart';
 export 'src/lang/extensions/others/duration.dart';
@@ -47,10 +53,6 @@ export 'src/lang/extensions/primitives/map.dart';
 export 'src/lang/extensions/primitives/num.dart';
 export 'src/lang/extensions/primitives/set.dart';
 export 'src/lang/extensions/primitives/string.dart';
-
-export 'src/lang/byte/byte_array.dart';
-export 'src/lang/byte/byte_stream.dart';
-export 'src/lang/byte/byte.dart';
 
 export 'src/lang/io/input_stream/buffered_input_stream.dart';
 export 'src/lang/io/input_stream/file_input_stream.dart';

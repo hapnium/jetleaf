@@ -1,3 +1,5 @@
+import '../../../exceptions.dart';
+import '../../../typedefs.dart';
 import '../base_stream.dart';
 import '../int/int_stream.dart';
 import '../double/double_stream.dart';
@@ -301,6 +303,18 @@ abstract class GenericStream<T> extends BaseStream<T, GenericStream<T>> {
   ///     .forEachOrdered(print); // prints 1, 2, 3, 4, 5 in order
   /// ```
   void forEachOrdered(void Function(T) action);
+
+  /// Returns the first element of this stream that matches the given predicate.
+  /// 
+  /// ## Example
+  /// ```dart
+  /// final firstEven = GenericStream.range(1, 10)
+  ///     .where((n) => n % 2 == 0)
+  ///     .first();
+  /// ```
+  /// 
+  /// Throws [NoSuchElementException] if no element matches the predicate.
+  GenericStream<T> where(Predicate<T> predicate);
 
   /// Returns a [List] containing the elements of this stream.
   /// 

@@ -1,3 +1,5 @@
+import '../../../exceptions.dart';
+import '../../../typedefs.dart';
 import '../int/int_stream.dart';
 import '../double/double_stream.dart';
 import 'generic_stream.dart';
@@ -263,6 +265,19 @@ class GenericStreamImplementation<T> implements GenericStream<T> {
   @override
   Optional<T> findAny() {
     return findFirst(); // In sequential context, same as findFirst
+  }
+
+  @override
+  GenericStream<T> where(Predicate<T> predicate) {
+    final it = iterator();
+    if (!it.moveNext()) {
+      throw NoSuchElementException();
+    }
+    final result = it.current;
+    if (!predicate(result)) {
+      throw NoSuchElementException();
+    }
+    return GenericStream.of([result]);
   }
 }
 

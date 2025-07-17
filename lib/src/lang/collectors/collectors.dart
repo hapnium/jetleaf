@@ -1,6 +1,6 @@
 import 'collector.dart';
-import 'int_summary_statistics.dart';
-import 'double_summary_statistics.dart';
+import '../statistics/int_summary_statistics.dart';
+import '../statistics/double_summary_statistics.dart';
 import 'internals.dart';
 
 /// {@template collectors}

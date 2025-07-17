@@ -1,140 +1,268 @@
+/// {@template predicate}
 /// A function that takes a value of type [T] and returns a boolean.
 ///
-/// Used for testing or filtering values.
-typedef Checker<T> = Bool Function(T value);
+/// Used for testing or filtering values in collections or streams.
+///
+/// {@tool snippet}
+/// ```dart
+/// final Predicate<int> isOdd = (value) => value.isOdd;
+/// print(isOdd(3)); // true
+/// ```
+/// {@end-tool}
+/// {@endtemplate}
+typedef Predicate<T> = Bool Function(T value);
 
-/// The accumulator function used in reduction operations.
-/// 
-/// This function takes an accumulator and a value and returns a new accumulator.
+/// {@template accumulator}
+/// A function used to accumulate values in reduction operations.
+///
+/// Takes an accumulator of type [U] and a current value of type [T],
+/// returning a new accumulator.
+///
+/// {@tool snippet}
+/// ```dart
+/// final Accumulator<int, int> sum = (acc, value) => acc + value;
+/// final total = [1, 2, 3, 4].reduce((a, b) => sum(a, b));
+/// print(total); // 10
+/// ```
+/// {@end-tool}
+/// {@endtemplate}
 typedef Accumulator<T, U> = U Function(U, T);
 
-/// A function that takes a value of type [T] and returns a value of type [U].
+/// {@template data_mapper}
+/// A function that transforms a value from type [T] to type [U].
 ///
-/// Used for transforming or mapping values from one type to another.
+/// Commonly used for mapping values in functional programming.
+///
+/// {@tool snippet}
+/// ```dart
+/// final DataMapper<String, int> lengthMapper = (s) => s.length;
+/// print(lengthMapper('hello')); // 5
+/// ```
+/// {@end-tool}
+/// {@endtemplate}
 typedef DataMapper<T, U> = U Function(T value);
 
-/// A function that takes a value of type [T] and performs an operation on it.
+/// {@template consumer}
+/// A function that consumes a value of type [T] without returning anything.
 ///
-/// Used for side effects or actions that don't return a value.
+/// Useful for triggering side effects like logging or UI updates.
+///
+/// {@tool snippet}
+/// ```dart
+/// final Consumer<String> printUpper = (value) => print(value.toUpperCase());
+/// printUpper('hello'); // HELLO
+/// ```
+/// {@end-tool}
+/// {@endtemplate}
 typedef Consumer<T> = void Function(T value);
 
-/// A function that returns a value of type [T].
+/// {@template supplier}
+/// A function that supplies a value of type [T], typically lazily or on-demand.
 ///
-/// Used for providing default values or generating values on demand.
+/// Useful for factories or deferred value generation.
+///
+/// {@tool snippet}
+/// ```dart
+/// final Supplier<DateTime> now = () => DateTime.now();
+/// print(now());
+/// ```
+/// {@end-tool}
+/// {@endtemplate}
 typedef Supplier<T> = T Function();
 
-/// A function that returns an exception object.
+/// {@template exception_supplier}
+/// A function that returns an exception object to be thrown when needed.
 ///
-/// Used for providing exceptions to be thrown in specific scenarios.
+/// Useful for lazy error throwing or assertion mechanisms.
+///
+/// {@tool snippet}
+/// ```dart
+/// final ExceptionSupplier notFound = () => Exception('Item not found');
+/// throw notFound();
+/// ```
+/// {@end-tool}
+/// {@endtemplate}
 typedef ExceptionSupplier = Object Function();
 
-/// A type alias for structured key-value storage used in repositories.
+/// {@template json_map}
+/// A JSON-like structure represented as a `Map<String, dynamic>`.
 ///
-/// This is typically used for storing JSON-like objects in a repository.
+/// Common in APIs and data storage layers.
+///
+/// {@tool snippet}
+/// ```dart
+/// JsonMap user = {'name': 'Alice', 'age': 30};
+/// print(user['name']); // Alice
+/// ```
+/// {@end-tool}
+/// {@endtemplate}
 typedef JsonMap = Map<String, dynamic>;
 
-/// A type alias for a collection of structured repository data.
+/// {@template json_map_collection}
+/// A list of JSON-like maps, useful for handling multiple entities.
 ///
-/// Useful when handling multiple JSON-like objects within a repository.
+/// {@tool snippet}
+/// ```dart
+/// JsonMapCollection users = [
+///   {'name': 'Alice'},
+///   {'name': 'Bob'}
+/// ];
+/// print(users.length); // 2
+/// ```
+/// {@end-tool}
+/// {@endtemplate}
 typedef JsonMapCollection = List<JsonMap>;
 
-/// A collection of strings.
+/// {@template string_collection}
+/// A list of strings.
 ///
-/// Represents a list containing multiple string values.
+/// {@tool snippet}
+/// ```dart
+/// StringCollection tags = ['dart', 'flutter', 'backend'];
+/// print(tags.contains('flutter')); // true
+/// ```
+/// {@end-tool}
+/// {@endtemplate}
 typedef StringCollection = List<String>;
 
+/// {@template string_set}
 /// A set of unique strings.
 ///
-/// Ensures that no duplicate string values exist within the collection.
+/// {@tool snippet}
+/// ```dart
+/// StringSet uniqueTags = {'dart', 'flutter', 'dart'};
+/// print(uniqueTags.length); // 2
+/// ```
+/// {@end-tool}
+/// {@endtemplate}
 typedef StringSet = Set<String>;
 
-/// A JSON-like structure where both keys and values are strings.
+/// {@template json_string}
+/// A map of string keys and string values representing simple string-based JSON data.
 ///
-/// Example:
-/// ```json
-/// {
-///   "name": "Alice",
-///   "city": "New York"
-/// }
+/// {@tool snippet}
+/// ```dart
+/// JsonString config = {'host': 'localhost', 'port': '8080'};
+/// print(config['port']); // 8080
 /// ```
+/// {@end-tool}
+/// {@endtemplate}
 typedef JsonString = Map<String, String>;
 
-/// A shorthand for an integer value.
+/// {@template int_alias}
+/// A shorthand alias for an integer value.
+/// {@endtemplate}
 typedef Int = int;
 
-/// A collection of integers using the `Int` alias.
+/// {@template int_collection}
+/// A list of integers using the `Int` alias.
 ///
-/// Represents a list containing multiple `Int` values.
+/// {@tool snippet}
+/// ```dart
+/// IntCollection numbers = [1, 2, 3, 4];
+/// print(numbers.reduce((a, b) => a + b)); // 10
+/// ```
+/// {@end-tool}
+/// {@endtemplate}
 typedef IntCollection = List<Int>;
 
+/// {@template int_set}
 /// A set of unique integers using the `Int` alias.
 ///
-/// Ensures that no duplicate `Int` values exist within the collection.
+/// {@tool snippet}
+/// ```dart
+/// IntSet scores = {100, 200, 300};
+/// print(scores.contains(200)); // true
+/// ```
+/// {@end-tool}
+/// {@endtemplate}
 typedef IntSet = Set<Int>;
 
-/// An alternative alias for a boolean value.
+/// {@template bool_alias}
+/// An alias for the built-in `bool` type.
+/// {@endtemplate}
 typedef Bool = bool;
 
-/// A collection of boolean values using the `Bool` alias.
+/// {@template bool_collection}
+/// A list of boolean values using the `Bool` alias.
 ///
-/// Represents a list containing multiple `Bool` values.
+/// {@tool snippet}
+/// ```dart
+/// BoolCollection flags = [true, false, true];
+/// print(flags.where((f) => f).length); // 2
+/// ```
+/// {@end-tool}
+/// {@endtemplate}
 typedef BoolCollection = List<Bool>;
 
+/// {@template bool_set}
 /// A set of unique boolean values using the `Bool` alias.
 ///
-/// Ensures that no duplicate `Bool` values exist within the collection.
+/// {@tool snippet}
+/// ```dart
+/// BoolSet truthValues = {true, false};
+/// print(truthValues.length); // 2
+/// ```
+/// {@end-tool}
+/// {@endtemplate}
 typedef BoolSet = Set<Bool>;
 
-/// A collection of date time values.
+/// {@template date_time_collection}
+/// A list of `DateTime` values.
 ///
-/// Represents a list containing multiple `DateTime` values.
+/// {@tool snippet}
+/// ```dart
+/// DateTimeCollection timestamps = [DateTime.now(), DateTime.utc(2024)];
+/// ```
+/// {@end-tool}
+/// {@endtemplate}
 typedef DateTimeCollection = List<DateTime>;
 
-/// A set of unique date time values.
+/// {@template date_time_set}
+/// A set of unique `DateTime` values.
 ///
-/// Ensures that no duplicate `DateTime` values exist within the collection.
+/// {@tool snippet}
+/// ```dart
+/// DateTimeSet moments = {DateTime.utc(2024), DateTime.utc(2025)};
+/// print(moments.length); // 2
+/// ```
+/// {@end-tool}
+/// {@endtemplate}
 typedef DateTimeSet = Set<DateTime>;
 
-/// A collection of duration values.
+/// {@template duration_collection}
+/// A list of `Duration` values.
 ///
-/// Represents a list containing multiple `Duration` values.
+/// {@tool snippet}
+/// ```dart
+/// DurationCollection delays = [Duration(seconds: 1), Duration(minutes: 1)];
+/// ```
+/// {@end-tool}
+/// {@endtemplate}
 typedef DurationCollection = List<Duration>;
 
-/// Represents a set of unique duration values.
+/// {@template duration_set}
+/// A set of unique `Duration` values.
 ///
-/// This typedef defines a set of `Duration` objects, ensuring that no
-/// duplicate `Duration` values are included.
+/// {@tool snippet}
+/// ```dart
+/// DurationSet timeouts = {Duration(seconds: 5), Duration(seconds: 10)};
+/// ```
+/// {@end-tool}
+/// {@endtemplate}
 typedef DurationSet = Set<Duration>;
 
-/// A typedef for a function that tests a condition on a value of type [T].
+/// {@template condition_tester}
+/// A typedef for a predicate function that tests a condition on a value of type [T].
 ///
-/// This typedef represents a function that takes a value of type [T] as input
-/// and returns a boolean value indicating whether the condition is met.
-///
-/// **Parameters:**
-///
-/// * `value`: The value of type [T] to test.
-///
-/// **Returns:**
-///
-/// `true` if the condition is met, `false` otherwise.
-///
-/// **Usage:**
-///
-/// This typedef is commonly used for defining filter or predicate functions
-/// that can be applied to collections or streams of data.
-///
-/// **Example:**
-///
+/// {@tool snippet}
 /// ```dart
 /// typedef IsEven = ConditionTester<int>;
 ///
 /// IsEven isEven = (int number) => number % 2 == 0;
-///
-/// List<int> numbers =;
-///
-/// List<int> evenNumbers = numbers.where(isEven).toList();
-///
-/// print(evenNumbers); // Output:
+/// final evenNumbers = [1, 2, 3, 4].where(isEven).toList();
+/// print(evenNumbers); // [2, 4]
 /// ```
+/// {@end-tool}
+/// {@endtemplate}
 typedef ConditionTester<T> = bool Function(T value);
