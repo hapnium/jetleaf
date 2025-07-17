@@ -42,7 +42,7 @@ class Integer implements Comparable<Integer> {
   /// [str] the string to parse
   /// [radix] the radix to use for parsing (default is 10)
   /// 
-  /// Throws [FormatException] if the string cannot be parsed.
+  /// Throws [InvalidFormatException] if the string cannot be parsed.
   /// 
   /// Example:
   /// ```dart

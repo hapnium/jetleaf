@@ -70,7 +70,7 @@ class LocalDateTime implements Comparable<LocalDateTime> {
 
   /// Parses a string in ISO 8601 format: `YYYY-MM-DDTHH:mm[:ss[.SSS]]`
   ///
-  /// Throws [FormatException] for invalid formats.
+  /// Throws [InvalidFormatException] for invalid formats.
   ///
   /// ### Example:
   /// ```dart

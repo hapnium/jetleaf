@@ -197,5 +197,14 @@ abstract interface class ClassContext<T> implements BaseClassContext {
   RuntimeClass arrayType();
 
   /// Returns the object cast to this class.
+  /// 
+  /// **Type Parameters:**
+  /// - [U]: The type to cast the object to.
   U cast<U>();
+
+  /// Returns the list of enum values for this class.
+  /// 
+  /// **Type Parameters:**
+  /// - [A]: The enum type.
+  List<A> getEnumValues<A extends Enum>();
 }

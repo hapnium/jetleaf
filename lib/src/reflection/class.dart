@@ -158,6 +158,22 @@ base class Class<T> implements AnnotatedElement, TypeDescriptorOfField<Class>, V
   }
 
   @override
+  List<A> getEnumValues<A extends Enum>() {
+    final values = <A>[];
+
+    for (final decl in mirror.dartMirror.declarations.values) {
+      if (decl is mirrors.VariableMirror && decl.isStatic && decl.isFinal) {
+        final value = mirror.dartMirror.getField(decl.simpleName).reflectee;
+        if (value.runtimeType == A) {
+          values.add(value as A);
+        }
+      }
+    }
+
+    return values;
+  }
+
+  @override
   A? getAnnotation<A extends ReflectableAnnotation>(ClassMirror<A> annotationType) {
     return _classMirror.getAnnotation(annotationType);
   }

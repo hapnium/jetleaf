@@ -61,10 +61,7 @@ class TemplateNotFoundException extends TemplateException {
 ///
 /// ### Example:
 /// ```dart
-/// throw TemplateRenderException(
-///   'Error rendering welcome email',
-///   FormatException('Invalid interpolation syntax'),
-/// );
+/// throw TemplateRenderException('Error rendering welcome email');
 /// ```
 ///
 /// {@endtemplate}
