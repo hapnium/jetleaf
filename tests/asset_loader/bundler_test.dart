@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'package:jetleaf/src/asset_loader/interface.dart';
 import 'package:test/test.dart';
 import 'package:jetleaf/asset_loader.dart';
 
