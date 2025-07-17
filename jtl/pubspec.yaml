@@ -1,0 +1,33 @@
+name: jtl
+description: The default template engine used by JetLeaf to render HTML templates.
+version: 1.0.0
+
+publish_to: none
+
+homepage: https://jetleaf.dev
+repository: https://github.com/hapnium/jetleaf
+
+topics:
+- Template Engine
+- HTML
+- Dart
+- Backend
+
+keywords:
+- Template Engine
+- HTML
+- Dart
+- Backend
+
+environment:
+  sdk: 3.8.1
+
+dependencies:
+  meta: ^1.17.0
+
+  jetleaf_bundler:
+    path: ../jetleaf_bundler
+
+dev_dependencies:
+  test: ^1.21.0
+  lints: ^3.0.0

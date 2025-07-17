@@ -1,0 +1,23 @@
+name: jetleaf_bundler
+description: The default asset bundler used by JetLeaf to load internal framework assets.
+version: 1.0.0
+
+publish_to: none
+
+homepage: https://jetleaf.dev
+repository: https://github.com/hapnium/jetleaf
+
+topics:
+- Asset Bundler
+- Resource Loader
+
+keywords:
+- Asset Bundler
+- Resource Loader
+
+environment:
+  sdk: 3.8.1
+
+dev_dependencies:
+  test: ^1.21.0
+  lints: ^3.0.0
