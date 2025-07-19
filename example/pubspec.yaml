@@ -1,0 +1,12 @@
+name: jetleaf_example
+description: A modern, high-performance backend application
+version: 1.0.0
+
+publish_to: none
+
+environment:
+  sdk: ^3.8.0
+
+dependencies:
+  jetleaf: 
+    path: ../
