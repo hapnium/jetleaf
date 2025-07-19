@@ -1,3 +1,17 @@
+/// ---------------------------------------------------------------------------
+/// 🍃 JetLeaf Framework - https://jetleaf.hapnium.com
+///
+/// Copyright © 2025 Hapnium & JetLeaf Contributors. All rights reserved.
+///
+/// This source file is part of the JetLeaf Framework and is protected
+/// under copyright law. You may not copy, modify, or distribute this file
+/// except in compliance with the JetLeaf license.
+///
+/// For licensing terms, see the LICENSE file in the root of this project.
+/// ---------------------------------------------------------------------------
+/// 
+/// 🔧 Powered by Hapnium — the Dart backend engine 🍃
+
 import 'package:jetleaf/core.dart';
 import 'package:jetleaf/lang.dart';
 import 'package:jetleaf/reflection.dart';
@@ -53,7 +67,7 @@ import 'object_factory.dart';
 ///
 /// Note: By default, non-singletons are included. Support for filtering them is not yet implemented.
 /// {@endtemplate}
-abstract interface class ObjectProvider<T> implements ObjectFactory<T>, Iterable<T> {
+abstract class ObjectProvider<T> implements ObjectFactory<T>, Iterable<T> {
   /// {@macro object_provider}
 
   /// A filter that accepts all classes.

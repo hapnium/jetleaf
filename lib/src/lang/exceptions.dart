@@ -1,3 +1,17 @@
+/// ---------------------------------------------------------------------------
+/// 🍃 JetLeaf Framework - https://jetleaf.hapnium.com
+///
+/// Copyright © 2025 Hapnium & JetLeaf Contributors. All rights reserved.
+///
+/// This source file is part of the JetLeaf Framework and is protected
+/// under copyright law. You may not copy, modify, or distribute this file
+/// except in compliance with the JetLeaf license.
+///
+/// For licensing terms, see the LICENSE file in the root of this project.
+/// ---------------------------------------------------------------------------
+/// 
+/// 🔧 Powered by Hapnium — the Dart backend engine 🍃
+
 /// General exception for language related errors.
 /// 
 /// Example usage:
@@ -219,4 +233,32 @@ class NoSuchElementException extends IOException {
 class ComparatorException extends LangException {
   /// {@macro comparator_exception}
   ComparatorException(String message) : super(message);
+}
+
+/// {@template reentrant_synchronized_exception}
+/// Exception thrown when a synchronized block is reentered from the same zone.
+/// 
+/// This exception is thrown when a synchronized block is entered from the same zone
+/// multiple times, which is not allowed.
+/// 
+/// ## Example
+/// ```dart
+/// try {
+///   synchronized(() {
+///     // Do something
+///   });
+/// } catch (e) {
+///   if (e is ReentrantSynchronizedException) {
+///     print('Synchronized block reentered from the same zone');
+///   }
+/// }
+/// ```
+/// 
+/// ---
+/// {@endtemplate}
+class ReentrantSynchronizedException extends LangException {
+  /// {@macro reentrant_synchronized_exception}
+  ReentrantSynchronizedException([String? message, Object? cause]) : super(
+    message ?? 'Synchronized block reentered from the same zone', cause: cause
+  );
 }

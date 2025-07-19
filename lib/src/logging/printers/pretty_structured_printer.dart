@@ -1,3 +1,17 @@
+/// ---------------------------------------------------------------------------
+/// 🍃 JetLeaf Framework - https://jetleaf.hapnium.com
+///
+/// Copyright © 2025 Hapnium & JetLeaf Contributors. All rights reserved.
+///
+/// This source file is part of the JetLeaf Framework and is protected
+/// under copyright law. You may not copy, modify, or distribute this file
+/// except in compliance with the JetLeaf license.
+///
+/// For licensing terms, see the LICENSE file in the root of this project.
+/// ---------------------------------------------------------------------------
+/// 
+/// 🔧 Powered by Hapnium — the Dart backend engine 🍃
+
 import '../helpers/commons.dart';
 import '../helpers/stack_trace_parser.dart';
 import '../models/log_record.dart';
@@ -44,6 +58,9 @@ final class PrettyStructuredPrinter extends LogPrinter {
   }) : config = config ?? LogConfig(),
        excludePaths = excludePaths ?? StackTraceParser.defaultExcludePaths;
 
+  final labelWidth = 16;
+  String label(String text) => text.padRight(labelWidth);
+
   @override
   List<String> log(LogRecord record) {
     final color = levelColor(record.level);
@@ -55,7 +72,7 @@ final class PrettyStructuredPrinter extends LogPrinter {
       final content = getStepValue(step, record);
       if (content != null) {
         if (step == LogStep.STACKTRACE) {
-          buffer.add(color('│ 📁 CALL STACK     : '));
+          buffer.add(color('│ 📁 ${label("CALL STACK")}: '));
           final stackLines = extractStack(record.stackTrace, excludePaths);
           for (final line in stackLines) {
             buffer.add(color('│    • $line'));
@@ -78,30 +95,30 @@ final class PrettyStructuredPrinter extends LogPrinter {
         final time = config.useHumanReadableTime 
             ? LogCommons.formatTimestamp(record.time, true)
             : record.time.toIso8601String();
-        return '📅 TIMESTAMP      : $time';
+        return '📅 ${label("TIMESTAMP")}: $time';
       case LogStep.DATE:
         if (!config.showDateOnly || !config.showTimestamp) return null;
-        return '📅 DATE           : ${record.time.toIso8601String().split('T')[0]}';
+        return '📅 ${label("DATE")}: ${record.time.toIso8601String().split('T')[0]}';
       case LogStep.LEVEL:
         if (!config.showLevel) return null;
         final emoji = config.showEmoji ? LogCommons.levelEmojis[record.level] ?? '📝' : '📝';
-        return '$emoji LEVEL          : ${record.level.name}';
+        return '$emoji ${label("LEVEL")}: ${record.level.name}';
       case LogStep.TAG:
         return (config.showTag && record.loggerName != null && record.loggerName!.isNotEmpty) 
-            ? '🧩 MODULE         : ${record.loggerName}' 
+            ? '🧩 ${label("MODULE")}: ${record.loggerName}' 
             : null;
       case LogStep.MESSAGE:
-        return '🔍 MESSAGE        : ${stringify(record.message)}';
+        return '🔍 ${label("MESSAGE")}: ${stringify(record.message)}';
       case LogStep.ERROR:
-        return (record.error != null) ? '❌ ERROR          : ${record.error}' : null;
+        return (record.error != null) ? '❌ ${label("ERROR")}: ${record.error}' : null;
       case LogStep.STACKTRACE:
         return null; // Handled separately
       case LogStep.THREAD:
-        return config.showThread ? '🧵 THREAD         : main' : null;
+        return config.showThread ? '🧵 ${label("THREAD")}: main' : null;
       case LogStep.LOCATION:
         if (!config.showLocation) return null;
         final location = record.location;
-        return location != null ? '📍 LOCATION       : $location' : null;
+        return location != null ? '📍 ${label("LOCATION")}: $location' : null;
     }
   }
 }

@@ -1,3 +1,17 @@
+/// ---------------------------------------------------------------------------
+/// 🍃 JetLeaf Framework - https://jetleaf.hapnium.com
+///
+/// Copyright © 2025 Hapnium & JetLeaf Contributors. All rights reserved.
+///
+/// This source file is part of the JetLeaf Framework and is protected
+/// under copyright law. You may not copy, modify, or distribute this file
+/// except in compliance with the JetLeaf license.
+///
+/// For licensing terms, see the LICENSE file in the root of this project.
+/// ---------------------------------------------------------------------------
+/// 
+/// 🔧 Powered by Hapnium — the Dart backend engine 🍃
+
 /// {@template reflectionException}
 /// Base class for all reflection-related exceptions.
 /// 
@@ -198,4 +212,61 @@ class BeanException extends ReflectionException {
 
   @override
   String toString() => "BeanException: $message";
+}
+
+/// {@template class_format_exception}
+/// Thrown when a class file has an invalid or unreadable format.
+///
+/// This exception indicates a problem with the binary structure or definition
+/// of a class that is being parsed or introspected.
+///
+/// Example:
+/// ```dart
+/// throw ClassFormatException('Invalid class header.');
+/// ```
+/// {@endtemplate}
+class ClassFormatException extends ReflectionException {
+  /// {@macro class_format_exception}
+  ClassFormatException(super.message);
+
+  @override
+  String toString() => "ClassFormatException: $message";
+}
+
+/// {@template class_not_found_exception}
+/// Thrown when a class cannot be found by the reflection system.
+///
+/// Typically occurs when trying to load a class that does not exist
+/// or is not available in the current context or classpath.
+///
+/// Example:
+/// ```dart
+/// throw ClassNotFoundException('com.example.Foo not found');
+/// ```
+/// {@endtemplate}
+class ClassNotFoundException extends ReflectionException {
+  /// {@macro class_not_found_exception}
+  ClassNotFoundException(super.message);
+
+  @override
+  String toString() => "ClassNotFoundException: $message";
+}
+
+/// {@template illegal_argument_exception}
+/// Thrown when a method receives an argument that is inappropriate or invalid.
+///
+/// This exception is commonly used to signal that a method has been
+/// passed an argument which does not meet its contract.
+///
+/// Example:
+/// ```dart
+/// throw IllegalArgumentException('Expected non-null value.');
+/// ```
+/// {@endtemplate}
+class IllegalArgumentException extends ReflectionException {
+  /// {@macro illegal_argument_exception}
+  IllegalArgumentException(super.message);
+
+  @override
+  String toString() => "IllegalArgumentException: $message";
 }

@@ -1,3 +1,17 @@
+/// ---------------------------------------------------------------------------
+/// 🍃 JetLeaf Framework - https://jetleaf.hapnium.com
+///
+/// Copyright © 2025 Hapnium & JetLeaf Contributors. All rights reserved.
+///
+/// This source file is part of the JetLeaf Framework and is protected
+/// under copyright law. You may not copy, modify, or distribute this file
+/// except in compliance with the JetLeaf license.
+///
+/// For licensing terms, see the LICENSE file in the root of this project.
+/// ---------------------------------------------------------------------------
+/// 
+/// 🔧 Powered by Hapnium — the Dart backend engine 🍃
+
 import 'dart:collection';
 
 import '../exceptions.dart';
@@ -235,6 +249,27 @@ class Queue<E> extends ListBase<E> {
   /// Retains only the elements in this queue that are contained in the specified collection.
   void retainAll(Iterable<Object?> elements) {
     _elements.retainWhere((element) => elements.contains(element));
+  }
+
+  /// Removes the last element from this queue.
+  /// 
+  /// Throws [NoGuaranteeException] if this queue is empty.
+  @override
+  E removeLast() {
+    if (_elements.isEmpty) {
+      throw NoGuaranteeException('Queue is empty');
+    }
+    return _elements.removeLast();
+  }
+
+  /// Removes the first element from this queue.
+  /// 
+  /// Throws [NoGuaranteeException] if this queue is empty.
+  E removeFirst() {
+    if (_elements.isEmpty) {
+      throw NoGuaranteeException('Queue is empty');
+    }
+    return _elements.removeAt(0);
   }
 
   /// Removes all elements that satisfy the given predicate.

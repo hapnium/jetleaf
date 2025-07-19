@@ -15,6 +15,8 @@
 import 'package:jetleaf/core.dart';
 
 import 'check.dart';
+import 'combine.dart';
+import 'check_in.dart' as checker;
 
 void main(List<String> args) {
   JetApplication.run(Main, args);
@@ -23,10 +25,14 @@ void main(List<String> args) {
 @JetLeafApplication()
 class Main {
   final Check check;
+  final Combine combine;
+  final checker.Check check_in;
 
-  Main(this.check);
+  Main(this.check, this.combine, this.check_in);
 
   void run() {
     check.check();
+    combine.combine();
+    check_in.name;
   }
 }

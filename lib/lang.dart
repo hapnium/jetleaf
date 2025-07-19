@@ -1,3 +1,17 @@
+/// ---------------------------------------------------------------------------
+/// 🍃 JetLeaf Framework - https://jetleaf.hapnium.com
+///
+/// Copyright © 2025 Hapnium & JetLeaf Contributors. All rights reserved.
+///
+/// This source file is part of the JetLeaf Framework and is protected
+/// under copyright law. You may not copy, modify, or distribute this file
+/// except in compliance with the JetLeaf license.
+///
+/// For licensing terms, see the LICENSE file in the root of this project.
+/// ---------------------------------------------------------------------------
+/// 
+/// 🔧 Powered by Hapnium — the Dart backend engine 🍃
+
 /// {@template lang_library}
 /// 🔡 JetLeaf Language & Utility Core
 /// 
@@ -58,6 +72,7 @@ export 'src/lang/io/input_stream/buffered_input_stream.dart';
 export 'src/lang/io/input_stream/file_input_stream.dart';
 export 'src/lang/io/input_stream/input_stream.dart';
 export 'src/lang/io/input_stream/byte_array_input_stream.dart';
+export 'src/lang/io/input_stream/input_stream_source.dart';
 
 export 'src/lang/io/output_stream/buffered_output_stream.dart';
 export 'src/lang/io/output_stream/byte_array_output_stream.dart';
@@ -83,7 +98,6 @@ export 'src/lang/io/print_stream/console_print_stream.dart';
 export 'src/lang/io/auto_closeable.dart';
 export 'src/lang/io/streaming.dart';
 export 'src/lang/io/stream_builder.dart';
-
 export 'src/lang/io/closeable.dart';
 export 'src/lang/io/flushable.dart';
 
@@ -104,9 +118,13 @@ export 'src/lang/time/local_date.dart';
 export 'src/lang/time/local_time.dart';
 export 'src/lang/time/zone_id.dart';
 
+export 'src/lang/synchronized/synchronized.dart';
+export 'src/lang/synchronized/synchronized_lock.dart';
+
 export 'src/lang/optional.dart';
 export 'src/lang/string_builder.dart';
 export 'src/lang/exceptions.dart';
 export 'src/lang/instance.dart';
 export 'src/lang/regex_utils.dart';
 export 'src/lang/typedefs.dart';
+export 'src/lang/try_with.dart';
